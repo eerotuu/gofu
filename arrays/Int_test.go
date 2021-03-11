@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func TestHas(t *testing.T) {
+func TestIntHas(t *testing.T) {
 	data := Int{1, 3, 5}
 	if got := data.Has(3); !got {
 		t.Errorf("Has(3) = %t; want true", got)
@@ -15,7 +15,7 @@ func TestHas(t *testing.T) {
 	}
 }
 
-func TestFilter(t *testing.T) {
+func TestIntFilter(t *testing.T) {
 	data := Int{1, 3, 5}
 	want := Int{3, 5}
 	got := data.Filter(func(i int) bool {
@@ -31,7 +31,7 @@ func TestFilter(t *testing.T) {
 
 }
 
-func TestMap(t *testing.T) {
+func TestIntMap(t *testing.T) {
 	data := Int{1, 3, 5}
 	want := Int{1, 9, 25}
 	got := data.Map(func(i int) int {
@@ -46,7 +46,7 @@ func TestMap(t *testing.T) {
 	}
 }
 
-func TestReduce(t *testing.T) {
+func TestIntReduce(t *testing.T) {
 	data := Int{1, 3, 5}
 	want := Int{0, 3, 10}
 	got := data.Reduce(func(acc Int, curr int) Int {
