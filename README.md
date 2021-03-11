@@ -4,7 +4,6 @@
 
 ```
 go get github.com/eerotuu/gofu/
-
 ```
 
 ### Quick Start
