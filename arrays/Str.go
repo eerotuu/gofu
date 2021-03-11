@@ -35,6 +35,30 @@ func (S Str) Map(mapper func(s string) string) (r Str) {
 	return r
 }
 
+func (S Str) Map2Int(mapper func(s string) int) (r Int) {
+	for _, v := range S {
+		r = append(r, mapper(v))
+	}
+
+	return r
+}
+
+func (S Str) Map2Float(mapper func(s string) float32) (r Float) {
+	for _, v := range S {
+		r = append(r, mapper(v))
+	}
+
+	return r
+}
+
+func (S Str) Map2Double(mapper func(s string) float64) (r Double) {
+	for _, v := range S {
+		r = append(r, mapper(v))
+	}
+
+	return r
+}
+
 // The Filter() method creates a new Str with all elemetns taht pass the test implemented
 // by the provided function.
 func (S Str) Filter(cond func(s string) bool) (r Str) {
