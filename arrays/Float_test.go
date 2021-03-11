@@ -1,6 +1,7 @@
 package arrays
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -58,4 +59,53 @@ func TestFloatReduce(t *testing.T) {
 			break
 		}
 	}
+}
+
+func TestFloatStr(t *testing.T) {
+	data := Float{1.123, 0.1233, 5123.123}
+	want := Str{"1.123", "0.1233", "5123.123"}
+	got := data.Str()
+
+	if l := len(got); l != len(want) {
+		t.Errorf("Converted array length doesn't match: got = %d, want = 3", l)
+	}
+
+	for i, v := range got {
+		if v != want[i] {
+			t.Errorf("Int()[%d] = %s, want %s", i, v, want[i])
+		}
+	}
+}
+
+func TestFloatInt(t *testing.T) {
+	data := Float{1.123, 0.1233, 5123.823}
+	want := Int{1, 0, 5123}
+	got := data.Int()
+
+	if l := len(got); l != len(want) {
+		t.Errorf("Converted array length doesn't match: got = %d, want = 3", l)
+	}
+
+	for i, v := range got {
+		if v != want[i] {
+			t.Errorf("Int()[%d] = %d, want %d", i, v, want[i])
+		}
+	}
+}
+
+func TestFloatDouble(t *testing.T) {
+	data := Float{1.1, 0.1233, 5123.823}
+	want := Double{1.1, 0.1233, 5123.823}
+	got := data.Double()
+
+	x := float32(1.123)
+	y := float64(1.123)
+	fmt.Printf("%g, %g\n", x, y)
+
+	if l := len(got); l != len(want) {
+		t.Errorf("Converted array length doesn't match: got = %d, want = 3", l)
+	}
+
+	// Go uses IEEE-754 binary floating-point numbers. Values are not exaclty
+	// the same after converting from float32 to float64
 }
