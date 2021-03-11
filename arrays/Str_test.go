@@ -85,3 +85,88 @@ func TestStrJoin(t *testing.T) {
 		t.Errorf("Join() = %s; want %s", got, want)
 	}
 }
+
+func TestStrInt(t *testing.T) {
+	data := Str{"1.2", "3", "5"}
+	got, err := data.Int()
+
+	if err == nil {
+		t.Errorf("Should return error when parsing non integers.")
+	}
+
+	data = Str{"1", "3", "5"}
+	want := Int{1, 3, 5}
+	got, err = data.Int()
+
+	if err != nil {
+		t.Errorf("Should not return error when parsing correct string values")
+		panic(err)
+	}
+
+	if l := len(got); l != len(want) {
+		t.Errorf("Converted array length doesn't match: got = %d, want = 3", l)
+	}
+
+	for i, v := range got {
+		if v != want[i] {
+			t.Errorf("Int() = %d, want %d", got, want)
+			break
+		}
+	}
+}
+
+func TestStrFloat(t *testing.T) {
+	data := Str{"1.2", "3", "a"}
+	got, err := data.Float()
+
+	if err == nil {
+		t.Errorf("Should return error when parsing non float string values.")
+	}
+
+	data = Str{"1", "3.123", "13.1245122888888"}
+	want := Float{1, 3.123, 13.124513}
+	got, err = data.Float()
+
+	if err != nil {
+		t.Errorf("Should not return error when parsing correct string values")
+		panic(err)
+	}
+
+	if l := len(got); l != len(want) {
+		t.Errorf("Converted array length doesn't match: got = %d, want = 3", l)
+	}
+
+	for i, v := range got {
+		if v != want[i] {
+			t.Errorf("Int()[%d] = %f, want %f", i, v, want[i])
+		}
+	}
+}
+
+func TestStrDouble(t *testing.T) {
+	data := Str{"1.2", "?", "a"}
+	got, err := data.Double()
+
+	if err == nil {
+		t.Errorf("Should return error when parsing non float string values.")
+	}
+
+	data = Str{"1", "3.123", "13.1245122888888"}
+	want := Double{1, 3.123, 13.1245122888888}
+	got, err = data.Double()
+
+	if err != nil {
+		t.Errorf("Should not return error when parsing correct string values")
+		panic(err)
+	}
+
+	if l := len(got); l != len(want) {
+		t.Errorf("Converted array length doesn't match: got = %d, want = 3", l)
+	}
+
+	for i, v := range got {
+		if v != want[i] {
+			t.Errorf("Int()[%d] = %g, want %f", i, v, want[i])
+		}
+	}
+}

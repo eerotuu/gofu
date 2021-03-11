@@ -1,5 +1,9 @@
 package arrays
 
+import (
+	"strconv"
+)
+
 // The Concat method is used to merge two or more strings.
 func Concat(s ...string) (r string) {
 	for _, v := range s {
@@ -65,4 +69,43 @@ func (S Str) Join(separator string) (r string) {
 
 func (strings Str) DropLast() Str {
 	return strings[:len(strings)-1]
+}
+
+func (I Str) Int() (r Int, err error) {
+	r = Int{}
+	for _, v := range I {
+		i, err := strconv.ParseInt(v, 10, 64)
+		if err != nil {
+			return nil, err
+		}
+		r = append(r, int(i))
+	}
+
+	return r, nil
+}
+
+func (I Str) Float() (r Float, err error) {
+	r = Float{}
+	for _, v := range I {
+		i, err := strconv.ParseFloat(v, 32)
+		if err != nil {
+			return nil, err
+		}
+		r = append(r, float32(i))
+	}
+
+	return r, nil
+}
+
+func (I Str) Double() (r Double, err error) {
+	r = Double{}
+	for _, v := range I {
+		i, err := strconv.ParseFloat(v, 64)
+		if err != nil {
+			return nil, err
+		}
+		r = append(r, i)
+	}
+
+	return r, nil
 }
