@@ -53,10 +53,12 @@ func (S Str) Reduce(reducer func(acc Str, curr string) Str) (r Str) {
 	return r
 }
 
-// The Join() method concatenates all strings in the Str, resulting in single output string.
-func (S Str) Join() (r string) {
-	for _, v := range S {
-		r = Concat(r, v)
+// The Join() method inserts separator between each element and concatenates all the elements,
+// resulting in single output string.
+func (S Str) Join(separator string) (r string) {
+	r = S[0]
+	for _, v := range S[1:] {
+		r = Concat(r, separator, v)
 	}
 	return r
 }

@@ -78,10 +78,10 @@ func TestStrReduce(t *testing.T) {
 }
 
 func TestStrJoin(t *testing.T) {
-	data := Str{"Hello ", "World!"}
+	data := Str{"Hello", "World!"}
 	want := "Hello World!"
 
-	if got := data.Join(); got != want {
+	if got := data.Join(" "); got != want {
 		t.Errorf("Join() = %s; want %s", got, want)
 	}
 }
