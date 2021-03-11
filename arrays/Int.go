@@ -41,7 +41,3 @@ func (I Int) Reduce(reducer func(acc Int, curr int) Int) (r Int) {
 func (I Int) DropLast() Int {
 	return I[:len(I)-1]
 }
-
-func (I Int) Get() []int {
-	return []int(I)
-}
