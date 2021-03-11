@@ -32,6 +32,30 @@ func (F Float) Map(fu func(f float32) float32) (r Float) {
 	return r
 }
 
+func (F Float) Map2Int(fu func(f float32) int) (r Int) {
+	for _, v := range F {
+		r = append(r, fu(v))
+	}
+
+	return r
+}
+
+func (F Float) Map2Str(fu func(f float32) string) (r Str) {
+	for _, v := range F {
+		r = append(r, fu(v))
+	}
+
+	return r
+}
+
+func (F Float) Map2Double(fu func(f float32) float64) (r Double) {
+	for _, v := range F {
+		r = append(r, fu(v))
+	}
+
+	return r
+}
+
 func (F Float) Reduce(reducer func(acc Float, curr float32) Float) (r Float) {
 	for _, v := range F {
 		r = reducer(r, v)
