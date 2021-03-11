@@ -37,7 +37,7 @@ result := data.Filter(func(s string) bool {
 
 - **Double** `[]float64`
 
-All types can beconverted with each other using type methods.
+All types can be converted with each other using type methods.
 
 ```go
 strArr := arrays.Str{"1", "5", "7"}
@@ -48,7 +48,7 @@ doubleArr := strArr.Double()
 // etc...
 ```
 
-**Generic Functions** `[]string, []int, []float32, []float64`
+**Generic Functions** `[]string` `[]int` `[]float32` `[]float64`
 
 - Map()
 - Filter()
