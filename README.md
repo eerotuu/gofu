@@ -13,12 +13,14 @@ go get github.com/eerotuu/gofu/
 import "github.com/eerotuu/gofu/arrays
 
 
-data := arrays.Str{"first", "second", "filter", "last"}
+data := Str{"hello", "not wanted", "world!", "last"}
 
 result := data.Filter(func(s string) bool {
-  return s != "filter"
-}).DropLast().Join()
+  return s != "not wanted"
+}).DropLast().Map(func(s string) string {
+  return strings.Title(s)
+}).Join(" ")
 
-// result = "firstsecond"
+// result = "Hello World!"
 
 ```
