@@ -13,7 +13,7 @@ go get github.com/eerotuu/gofu/
 import "github.com/eerotuu/gofu/arrays
 
 
-data := Str{"hello", "not wanted", "world!", "last"}
+data := arrays.Str{"hello", "not wanted", "world!", "last"}
 
 result := data.Filter(func(s string) bool {
   return s != "not wanted"
