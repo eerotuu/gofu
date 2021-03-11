@@ -1,5 +1,7 @@
 package arrays
 
+import "fmt"
+
 type Int []int
 
 func (I Int) Has(i int) bool {
@@ -40,4 +42,31 @@ func (I Int) Reduce(reducer func(acc Int, curr int) Int) (r Int) {
 
 func (I Int) DropLast() Int {
 	return I[:len(I)-1]
+}
+
+func (I Int) Str() (r Str) {
+	r = Str{}
+	for _, v := range I {
+		r = append(r, fmt.Sprint(v))
+	}
+
+	return r
+}
+
+func (I Int) Float() (r Float) {
+	r = Float{}
+	for _, v := range I {
+		r = append(r, float32(v))
+	}
+
+	return r
+}
+
+func (I Int) Double() (r Double) {
+	r = Double{}
+	for _, v := range I {
+		r = append(r, float64(v))
+	}
+
+	return r
 }

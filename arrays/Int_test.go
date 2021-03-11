@@ -55,7 +55,58 @@ func TestIntReduce(t *testing.T) {
 
 	for i, v := range got {
 		if v != want[i] {
-			t.Errorf("Reduce() = %d; want [0 3 10]", got)
+			t.Errorf("Reduce() = %d; want %d", got, want)
+			break
+		}
+	}
+}
+
+func TestIntStr(t *testing.T) {
+	data := Int{1, 3, 5}
+	want := Str{"1", "3", "5"}
+	got := data.Str()
+
+	if l := len(got); l != len(want) {
+		t.Errorf("Converted array length doesn't match: got = %d, want = 3", l)
+	}
+
+	for i, v := range got {
+		if v != want[i] {
+			t.Errorf("Str() = %s, want %s", got, want)
+			break
+		}
+	}
+}
+
+func TestIntFloat(t *testing.T) {
+	data := Int{1, 3, 5}
+	want := Float{1, 3, 5}
+	got := data.Float()
+
+	if l := len(got); l != len(want) {
+		t.Errorf("Converted array length doesn't match: got = %d, want = 3", l)
+	}
+
+	for i, v := range got {
+		if v != want[i] {
+			t.Errorf("Str() = %f, want %f", got, want)
+			break
+		}
+	}
+}
+
+func TestIntDouble(t *testing.T) {
+	data := Int{1, 3, 5}
+	want := Double{1, 3, 5}
+	got := data.Double()
+
+	if l := len(got); l != len(want) {
+		t.Errorf("Converted array length doesn't match: got = %d, want = 3", l)
+	}
+
+	for i, v := range got {
+		if v != want[i] {
+			t.Errorf("Str() = %f, want %f", got, want)
 			break
 		}
 	}
