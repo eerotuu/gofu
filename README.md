@@ -7,7 +7,7 @@
 import "github.com/eerotuu/gofu/arrays
 
 
-data = arrays.Str{"first", "second", "filter", "last"}
+data := arrays.Str{"first", "second", "filter", "last"}
 
 result := data.Filter(func(s string) bool {
   return s != "filter"
