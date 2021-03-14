@@ -1,5 +1,8 @@
 # Go Functional:
 
+Created this module for learning Golang and its possibilities as functional language.
+**This probably is something you shouldn't use in real project.**
+
 ### Install
 
 ```
@@ -55,7 +58,7 @@ doubleArr := strArr.Double()
 - Reduce()
 - DropLast()
 
-**Type Secific Functions:**
+**Type Specific Functions:**
 
 **Str** `[]string`
 
